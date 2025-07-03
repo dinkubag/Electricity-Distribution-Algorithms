@@ -402,15 +402,9 @@ def print_graph():
     experiments_csv.multi_plot_results("./results/final_results_diff-delta_withsymbol.csv", filter={}, subplot_field="alg", subplot_rows=1, subplot_cols=2,
 x_field="K", y_field="Max-Util-diff(Comfort)", z_field="delta(symbol)" , sharex=True, sharey=True, mean=True, save_to_file=True)
     
-    # experiments_csv.multi_plot_results("./results/final_results_diff-delta_withsymbol.csv", filter={}, subplot_field="alg", subplot_rows=1, subplot_cols=2,
-# x_field="K", y_field="Egalitarian(Comfort)", z_field="delta(symbol)" , sharex=True, sharey=True, mean=True, save_to_file=True)
-    
-    # experiments_csv.multi_plot_results("./results/final_results_diff-delta_withsymbol.csv", filter={}, subplot_field="alg", subplot_rows=1, subplot_cols=2,
-# x_field="K", y_field="Utilitarian(Comfort)", z_field="delta(symbol)" , sharex=True, sharey=True, mean=True, save_to_file=True)
-    # experiments_csv.single_plot_results("./results/approxAlgo-diff-uncertainties_results.csv", filter={"Metric1:":"Hours_of_Connection"}, x_field="delta", y_field="Util_M1", z_field="alg", mean= False, save_to_file=True)
 
-# call_ed()
-# print_graph()
+call_ed()
+print_graph()
 
 if __name__ == "__main__":
     import doctest
