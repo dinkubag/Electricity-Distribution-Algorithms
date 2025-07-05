@@ -185,7 +185,7 @@ class ElectricityDistribution:
             # if testing individual algorithm you can use the below line
             # logging.basicConfig(filename='eds_' + supply_alg+ '.log', encoding='utf-8', level=logging.DEBUG, force=True)
             # otherwise below line is default
-            logging.basicConfig(filename="time_model_electricity_distribution.log", encoding="utf-8", level=logging.DEBUG, force=True)
+            logging.basicConfig(filename="supply_model_electricity_distribution.log", encoding="utf-8", level=logging.DEBUG, force=True)
         else:
             logger = logging.getLogger("Supply Model: Electricity Distribution Algorithms: ")
         
@@ -388,11 +388,8 @@ class ElectricityDistribution:
             # logger.info(f"Max-Util-diff(Supply): {sum(avg_supply_EF)/(sml+1)}") 
             # logger.info(f"Max-Util-diff(Supply)_SD: {np.std(avg_supply_EF)}")
             
-            # logger.info(f"EgalitarianSupply(Watts): {sum([sup for sup in avg_agent_min_supply])/(sml+1)}")
-            # logger.info(f"Maximum Supply difference(Watts): {sum([sup for sup in avg_agent_max_supply])/(sml+1) - sum([sup for sup in avg_agent_min_supply])/(sml+1)}")
-            
             # logger.info(f"Avg-Min-Supply(Watts) : {(sum(avg_min_supply))/(sml+1)}")
-            # logger.info(f"Avg-Max_Supply-diff(Watts) : {(sum(avg_max_supply) - sum(avg_min_supply))/(sml+1)}")
+            # logger.info(f"Avg-Min_Supply(Watts)_SD : {np.std(avg_min_supply)}")
             
             # sml_end = time.perf_counter()
             # logger.info(f"Time taken for simulation {sml} : {sml_end - sml_start:0.4f} seconds")
@@ -424,12 +421,8 @@ class ElectricityDistribution:
                 "Egalitarian(Supply)_SD": np.std(avg_asr),
                 "Max-Util-diff(Supply)": sum(avg_supply_EF)/simulations, 
                 "Max-Util-diff(Supply)_SD": np.std(avg_supply_EF),
-                "EgalitarianSupply(Watts)": sum(avg_agent_min_supply)/simulations,
-                "Max_Supply-diff(Watts)" : (sum(avg_agent_max_supply) - sum(avg_agent_min_supply))/simulations,
                 "Avg-Min-Supply(Watts)" : (sum(avg_min_supply))/simulations,
-                "Avg-Min-Supply(Watts)_SD" : np.std(avg_min_supply),
-                "Avg-Max_Supply-diff(Watts)" : (sum(avg_max_supply) - sum(avg_min_supply))/simulations,
-                "Avg-Max_Supply-diff(Watts)_SD" : np.std([avg_max_supply[i]-avg_min_supply[i] for i in range(simulations)]),
+                "Avg-Min-Supply(Watts)_SD" : np.std(avg_min_supply)
             } 
         
         
