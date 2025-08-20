@@ -587,7 +587,7 @@ def compute_egal_alg3_v3(alg:str, demands: List[float], supply: int, k:int, r:fl
     
         sums, lists, new_agents_k_vector, g_items_list = soln_grp
         
-        solution_grp = Solution(sums, lists, new_demands, new_agents_k_vector, group_size = grp , g=grp, group_list=g_items_list)
+        solution_grp = Solution(sums, lists, new_demands, new_agents_k_vector, group_size = grp , g=grp, group_list=g_items_list, k=k)
         solution_grp.compute_agents_connection_vector()
         solution_grp.compute_agents_egal_vector()
         solution_grp.solution_egalconn_val(0)
