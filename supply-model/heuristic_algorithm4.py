@@ -310,6 +310,28 @@ def compute_egal_alg4_v1(alg:str, demands: List[float], supply: int, k:int=1):
         solution_end.solution_egalconn_val(0)
         solution_end.solution_egalsupply_val(0)
         solution_end.compute_asr_vector()
+
+        # for logging ----- START
+        # uncomment for testing
+        # for solution begin
+        # logger.info("\n\n****Different SOLUTIONS: solution begin****")
+        # sums = solution_begin.sums
+        # lists = solution_begin.lists
+        # numbins = len(sums)
+        # bin_str = [f"Bin #{i}: {lists[i]}, sum={sums[i]}" for i in range(numbins)]
+        # logger.debug(f"{bin_str}\n")
+        # logger.debug(f"These items are always connected: {solution_begin.grouped_demands_list}")
+        # logger.debug(f"Egal Connection List: {solution_begin.agents_conn_vector}")
+        # logger.debug(f"Egal Supply List: {solution_begin.agents_egal_vector}")
+        # logger.debug(f"Total Watts={sum([item[0] for item in solution_begin.agents_egal_vector])}")
+        # logger.debug(f"Total Connections(time)={sum([item[0] for item in solution_begin.agents_conn_vector])}")
+        # logger.debug(f"ASR List: {solution_begin.asr_vector}")
+        # logger.debug(f"Min ASR: {solution_begin.min_asr}")
+        # max_sup, min_sup = solution_begin.determine_max_and_min()
+        # logger.debug(f"g = {solution_begin.g}")
+        # logger.debug(f"max supply: {max_sup}, min supply: {min_sup}, max supply diff: {max_sup - min_sup}")
+        # logger.info("\n\n\n\n")
+        # for logging ----- END
         
         if solution_end > solution_begin and (best_solution == None or solution_end > best_solution) :
             best_solution = solution_end
@@ -320,7 +342,26 @@ def compute_egal_alg4_v1(alg:str, demands: List[float], supply: int, k:int=1):
         # update begin and end
         begin = int(round((begin*2 + end)/3, 0))
         end = int(round((begin + end*2)/3, 0))
-        
+
+        # for logging ------ START
+        # logger.info("\n\n****Different SOLUTIONS: solution end****")
+        # sums = solution_end.sums
+        # lists = solution_end.lists
+        # numbins = len(sums)
+        # bin_str = [f"Bin #{i}: {lists[i]}, sum={sums[i]}" for i in range(numbins)]
+        # logger.debug(f"{bin_str}\n")
+        # logger.debug(f"These items are always connected: {solution_end.grouped_demands_list}")
+        # logger.debug(f"Egal Connection List: {solution_end.agents_conn_vector}")
+        # logger.debug(f"Egal Supply List: {solution_end.agents_egal_vector}")
+        # logger.debug(f"Total Watts={sum([item[0] for item in solution_end.agents_egal_vector])}")
+        # logger.debug(f"Total Connections(time)={sum([item[0] for item in solution_end.agents_conn_vector])}")
+        # logger.debug(f"ASR List: {solution_end.asr_vector}")
+        # logger.debug(f"Min ASR: {solution_end.min_asr}")
+        # max_sup, min_sup = solution_end.determine_max_and_min()
+        # logger.debug(f"g = {solution_end.g}")
+        # logger.debug(f"max supply: {max_sup}, min supply: {min_sup}, max supply diff: {max_sup - min_sup}")
+        # logger.info("\n\n\n\n")
+        # for logging ------ END
             
     for grp in range(begin, end+1):
         soln_grp = compute_solution(alg, new_demands, sorted_smallest_tolargest_demand, supply, grp, k)
@@ -336,6 +377,26 @@ def compute_egal_alg4_v1(alg:str, demands: List[float], supply: int, k:int=1):
         
         if best_solution == None or solution_grp > best_solution:
             best_solution = solution_grp
+
+        # for logging ----- START
+        # logger.info("\n\n****Different SOLUTIONS: groups in for loop****")
+        # sums = solution_grp.sums
+        # lists = solution_grp.lists
+        # numbins = len(sums)
+        # bin_str = [f"Bin #{i}: {lists[i]}, sum={sums[i]}" for i in range(numbins)]
+        # logger.debug(f"{bin_str}\n")
+        # logger.debug(f"These items are always connected: {solution_grp.grouped_demands_list}")
+        # logger.debug(f"Egal Connection List: {solution_grp.agents_conn_vector}")
+        # logger.debug(f"Egal Supply List: {solution_grp.agents_egal_vector}")
+        # logger.debug(f"Total Watts={sum([item[0] for item in solution_grp.agents_egal_vector])}")
+        # logger.debug(f"Total Connections(time)={sum([item[0] for item in solution_grp.agents_conn_vector])}")
+        # logger.debug(f"ASR List: {solution_grp.asr_vector}")
+        # logger.debug(f"Min ASR: {solution_grp.min_asr}")
+        # max_sup, min_sup = solution_grp.determine_max_and_min()
+        # logger.debug(f"g = {solution_grp.g}")
+        # logger.debug(f"max supply: {max_sup}, min supply: {min_sup}, max supply diff: {max_sup - min_sup}")
+        # logger.info("\n\n\n\n")
+        # for logging ------ END
 
     # logging ----------------- START
     # uncomment if testing this function
