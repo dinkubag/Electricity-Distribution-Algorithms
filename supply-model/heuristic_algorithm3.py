@@ -254,6 +254,8 @@ def compute_solution(alg, new_new_demands, groups, stl_demand_list, supply, g, k
         demands_to_replace = []
         demands_to_add = []
         for demand in new_new_demands:
+            demands_to_replace = []
+            demands_to_add = []
             if demand in lists[bin_index]:
                 demands_to_replace.append(demand)
                 # for item in groups[demand[1]].agents:       #OLD LINE
@@ -278,12 +280,13 @@ def compute_solution(alg, new_new_demands, groups, stl_demand_list, supply, g, k
                     if agent_ktuple not in new_agents_k_vector:
                         new_agents_k_vector.append(agent_ktuple)
         
-        # removing the demands in demands_to_replace
-        for demand in demands_to_replace:
-            binner.remove_item_from_bin(solution, demand, bin_index)
-        # adding the demands in demands_to_add
-        for demand in demands_to_add:
-            binner.add_item_to_bin(solution, demand, bin_index)
+            # removing the demands in demands_to_replace
+            for demand in demands_to_replace:
+                binner.remove_item_from_bin(solution, demand, bin_index)
+            
+            # adding the demands in demands_to_add
+            for demand in demands_to_add:
+                binner.add_item_to_bin(solution, demand, bin_index)
         
         # for logging
         # logger.debug(f"after replacing: {lists[bin_index]}")
